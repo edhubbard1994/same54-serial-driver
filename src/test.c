@@ -1,4 +1,8 @@
 #include <stdint.h>
+
+#include "headers/setup.h"
+
+
 #define PORT_OUT *( (uint32_t*) 0x41008110)
 #define PORT_DIR_SET *( (uint32_t*) 0x41008108)
 #define PORT_PIN_FUNCTION *( (uint32_t*) 0x41008110)
@@ -12,6 +16,7 @@ void delay (unsigned int time) {
 
 
 int main(void){
+    system_init();
     PORT_OUT = (1 << 18);
     PORT_DIR_SET = (1 << 18);
     for(;;){
@@ -28,6 +33,7 @@ int main(void){
 
 
 void Reset_Handler() {
+    asm("");
     main();
 
 }
