@@ -1,6 +1,6 @@
 #include <stdint.h>
 
-
+extern _estack;
 
 
 __attribute__ ((section(".vectors")))
