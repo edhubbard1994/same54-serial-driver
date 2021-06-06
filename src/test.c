@@ -1,7 +1,11 @@
 #include <stdint.h>
+//#include "atmel_start.h"
 
-#include "setup.h"
+//#include "setup.h"
+extern _estack;
 
+__attribute__ ((section(".vectors")))
+uint32_t *RESET_VECTOR_ARR;
 
 #define PORT_OUT *( (uint32_t*) 0x41008110)
 #define PORT_DIR_SET *( (uint32_t*) 0x41008108)
@@ -16,7 +20,8 @@ void delay (unsigned int time) {
 
 
 int main(void){
-    init_board();
+    //system_init();
+    //init_board();
     PORT_OUT = (1 << 18);
     PORT_DIR_SET = (1 << 18);
     for(;;){
@@ -33,7 +38,11 @@ int main(void){
 
 
 void Reset_Handler() {
-    asm("");
+    RESET_VECTOR_ARR[0] = &_estack;
+
+    asm("mov r0,0\n"
+        "ldr r0,[r0]\n"
+        "mov sp,r0\n");
     main();
 
 }

@@ -9,11 +9,17 @@ HDIR=../headers
 CFLAGS=-Isrc/
 CFLAGS += -DDEBUG=2
 CFLAGS+=-O0 -fno-stack-protector -mthumb -march=armv7e-m -mtune=cortex-m4 -mfloat-abi=hard -mfpu=fpv4-sp-d16 -fvar-tracking -g3
-CFLAGS+=-I./src/samd51/CMSIS/Include
-CFLAGS+=-I./src/samd51/include/instance
-CFLAGS+=-I./src/samd51/include/pio
-CFLAGS+=-I./src/samd51/include
-CFLAGS+=-I./src/samd51/include/component
+CFLAGS+=-I../atmel/CMSIS/Include
+CFLAGS+=-I../atmel/include/instance
+CFLAGS+=-I../atmel/include/pio
+CFLAGS+=-I./../atmel/include
+CFLAGS+=-I../atmel/include/component
+CFLAGS+=-I../atmel
+CFLAGS+=-I../atmel/hri
+CFLAGS+=-I../atmel/config
+CFLAGS+=-I../atmel/hal/include
+CFLAGS+=-I../atmel/hpl/port
+CFLAGS+=-I../atmel/hal/utils/include
 CFLAGS+=-I $(HDIR)
 CFLAGS+= -D__ATSAMD51G18A__
 CFLAGS+= -D pvPortMalloc=malloc
@@ -29,9 +35,7 @@ SIZE=arm-none-eabi-size
 
 
 OBJS +=  \
-	test.o \
-	setup.o
-
+	test.o 
 
 
 #OBJ = $(patsubst %,$(ODIR))
