@@ -5,7 +5,7 @@
 extern _estack;
 
 __attribute__ ((section(".vectors")))
-uint32_t *RESET_VECTOR_ARR;
+uint32_t RESET_VECTOR_ARR[64];
 
 #define PORT_OUT *( (uint32_t*) 0x41008110)
 #define PORT_DIR_SET *( (uint32_t*) 0x41008108)
@@ -13,7 +13,7 @@ uint32_t *RESET_VECTOR_ARR;
 //uint32_t *pcclear = 0x4100800;
 
 void delay (unsigned int time) {
-    for (int k =0; k < time; k++) {
+    for ( int k =0; k < time; k++) {
         asm("nop");
     }
 }
@@ -38,7 +38,9 @@ int main(void){
 
 
 void Reset_Handler() {
-    RESET_VECTOR_ARR[0] = &_estack;
+    uint32_t *stack_start;
+    stack_start = &RESET_VECTOR_ARR[0];
+    stack_start = &_estack;
 
     asm("mov r0,0\n"
         "ldr r0,[r0]\n"
