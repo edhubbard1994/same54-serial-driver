@@ -5,6 +5,7 @@ OPENOCDDIR := /usr/local/share/openocd/scripts
 OCDCONFIG= microchip_same54_xplained_pro.cfg
 ODIR=../obj
 SDIR=../src
+HDIR=../headers
 CFLAGS=-Isrc/
 CFLAGS += -DDEBUG=2
 CFLAGS+=-O0 -fno-stack-protector -mthumb -march=armv7e-m -mtune=cortex-m4 -mfloat-abi=hard -mfpu=fpv4-sp-d16 -fvar-tracking -g3
@@ -13,7 +14,7 @@ CFLAGS+=-I./src/samd51/include/instance
 CFLAGS+=-I./src/samd51/include/pio
 CFLAGS+=-I./src/samd51/include
 CFLAGS+=-I./src/samd51/include/component
-
+CFLAGS+=-I $(HDIR)
 CFLAGS+= -D__ATSAMD51G18A__
 CFLAGS+= -D pvPortMalloc=malloc
 CFLAGS+= -D vPortMalloc=malloc
@@ -28,7 +29,10 @@ SIZE=arm-none-eabi-size
 
 
 OBJS +=  \
-	test.o
+	test.o \
+	setup.o
+
+
 
 #OBJ = $(patsubst %,$(ODIR))
 
@@ -44,7 +48,7 @@ $(ODIR)/%.o: $(SDIR)/%.s
 all: bin
 
 bin: $(OBJ)
-	$(CC)  $(CFLAGS) ../obj/* --specs=nano.specs -Tlinker_script.ld -specs=nosys.specs -L/usr/local/gcc-arm-none-eabi-9-2019-q4-major/arm-none-eabi/lib/thumb/v7e-m+fp/hard -L/usr/local/gcc-arm-none-eabi-9-2019-q4-major/lib/gcc/arm-none-eabi/9.2.1/thumb/v7e-m+fp/hard -Wl,"-u _printf_float" -lc -lgcc -lm -static -e Reset_Handler -o test.elf
+	$(CC) $(CFLAGS) ../obj/* --specs=nano.specs -Tlinker_script.ld -specs=nosys.specs -L/usr/local/gcc-arm-none-eabi-9-2019-q4-major/arm-none-eabi/lib/thumb/v7e-m+fp/hard -L/usr/local/gcc-arm-none-eabi-9-2019-q4-major/lib/gcc/arm-none-eabi/9.2.1/thumb/v7e-m+fp/hard -Wl,"-u _printf_float" -lc -lgcc -lm -static -e Reset_Handler -o test.elf
 	# ctags -R src/*
 	$(SIZE) test.elf
 

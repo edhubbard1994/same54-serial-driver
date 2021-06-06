@@ -1,6 +1,6 @@
 #include <stdint.h>
 
-#include "headers/setup.h"
+#include "setup.h"
 
 
 #define PORT_OUT *( (uint32_t*) 0x41008110)
@@ -16,7 +16,7 @@ void delay (unsigned int time) {
 
 
 int main(void){
-    system_init();
+    init_board();
     PORT_OUT = (1 << 18);
     PORT_DIR_SET = (1 << 18);
     for(;;){
