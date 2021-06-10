@@ -35,7 +35,8 @@ SIZE=arm-none-eabi-size
 
 
 OBJS +=  \
-	test.o 
+	test.o \
+	setup.o
 
 
 #OBJ = $(patsubst %,$(ODIR))

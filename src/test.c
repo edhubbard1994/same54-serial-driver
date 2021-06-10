@@ -1,24 +1,8 @@
 #include <stdint.h>
 //#include "atmel_start.h"
 
-//#include "setup.h"
+#include "setup.h"
 
-
-extern _estack; // stack pointer reference from linker
-
-
-
-typedef struct { // define vector table type 
-    uint32_t*       stack_ptr // initialize stack pointer
-
-} VectorTable;
-
-
-// create the vector table and link it to .vectors section of memory
-__attribute__ ((section(".vectors")))
-const VectorTable vectors = {
-    .stack_ptr = &_estack
-};
 
 
 // Setup PORT register for LED flashing
@@ -54,10 +38,10 @@ int main(void){
 
 
 void Reset_Handler() {
-    
-    asm("mov r0,0\n"
-        "ldr r0,[r0]\n"
-        "mov sp,r0\n");
+    stack_begin();
+    // asm("mov r0,0\n"
+    //     "ldr r0,[r0]\n"
+    //     "mov sp,r0\n");
     main();
 
 }

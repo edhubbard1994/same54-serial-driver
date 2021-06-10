@@ -1,7 +1,7 @@
 #include "setup.h"
 
 
-void init_board() {
+void stack_begin() {
     //*RESET_VECTOR_ARR[0] = &_estack;
 
     asm("mov r0,0\n"

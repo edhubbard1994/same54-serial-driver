@@ -3,11 +3,21 @@
 
 #include <stdint.h>
 
-extern _estack;
+extern _estack; // stack pointer reference from linker
 
-void init_board();
 
+typedef struct { // define vector table type 
+    uint32_t*       stack_ptr // initialize stack pointer
+
+} VectorTable;
+
+
+// create the vector table and link it to .vectors section of memory
 __attribute__ ((section(".vectors")))
-uint32_t *RESET_VECTOR_ARR[64];
+static const VectorTable vectors = {
+    .stack_ptr = &_estack
+};
+
+void stack_begin();
 
 #endif
