@@ -1,11 +1,22 @@
 #ifndef __SERIAL_H
 #define __SERIAL_H
 
+/**
+ * @brief Header for the Serial Interface 
+ * 
+ * See Page 851 in the datasheet 
+ * 
+ */
+
+
+
+
+//addresses for sercom functions
 #define SERCOMM1 0x40003000
 #define SERCOMM2 0x40003400
 
 
-//TODO: MAke this a configurable mode for user
+//TODO: Make this a configurable mode for user
 typedef enum {
     UART = 0,
     I2C = 1,
