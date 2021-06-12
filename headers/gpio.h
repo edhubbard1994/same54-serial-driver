@@ -7,7 +7,7 @@
 
 typedef unsigned int pin_num_t;
 
-
+#define PORT_BASE_VALUE 0x41008000
 
 #define PORT_OUT *( (uint32_t*) 0x41008110) // Direct write to PC18 
 #define PORT_DIR_SET *( (uint32_t*) 0x41008108) // Direction set for PC18
