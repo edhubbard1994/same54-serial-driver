@@ -5,22 +5,25 @@
 #include "gpio.h"
 
 
-
-int main(void){
-
+void test_led_flash() {
     pin_setup();
 
     for(;;){
         
-        delay(200000);
+        delay(2000000);
         pin_write(18, ON);
 
-        delay(200000);
+        delay(2000000);
         pin_write(18, OFF);
 
         //0x41008000
         //0x41008010
     }
+}
+
+int main(void){
+    //test_led_flash();
+
 }
 
 

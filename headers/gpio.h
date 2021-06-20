@@ -25,5 +25,7 @@ void pin_setup();
 
 void pin_write(const pin_num_t pin, binary_state state);
 
+void pin_serial();
+
 
 #endif
