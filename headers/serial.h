@@ -12,8 +12,8 @@
 
 
 //addresses for sercom functions
-#define SERCOMM1 0x40003000
-#define SERCOMM2 0x40003400
+#define SERCOM0 0x40003000
+#define SERCOM1 0x40003400
 
 
 //TODO: Make this a configurable mode for user
