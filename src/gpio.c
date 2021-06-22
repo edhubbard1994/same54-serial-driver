@@ -14,7 +14,6 @@ void pin_write(const pin_num_t pin, binary_state state){
 
 void pin_serial() {
     PINPMUX = 0x03; // Mode D = SERCOMM0 for PC18
-    PINCFG0 = 0x1; // Set enable bit (bit 0) to 1
-    
+    PINCFG0 = 0x1; // Set enable bit (bit 0) to 1   
 }
 
