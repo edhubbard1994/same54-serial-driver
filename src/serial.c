@@ -11,6 +11,9 @@ void serial_setup() {
     CTRLA0 |= 0x10000000; //asyncronous (UART) mode
 
     CTRLB0 |= 0x100; //collision detection
+    CTRLB0 |= 0x10000; //tx enable
+    CTRLB0 |= 0x20000; //rx enable
+
 
 
 
