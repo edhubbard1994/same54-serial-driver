@@ -24,6 +24,8 @@
 #define LENGTH0 *((uint32_t *) 0x40003022)
 #define DATA0 *((uint32_t *) 0x40003028)
 
+//external gclock0
+
 
 //TODO: Make this a configurable mode for user
 typedef enum {

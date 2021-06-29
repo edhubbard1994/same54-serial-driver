@@ -1,6 +1,7 @@
 #include "serial.h"
 
 #include <stdint.h>
+#include <string.h>
 
 
 void serial_setup() {
@@ -14,24 +15,18 @@ void serial_setup() {
     CTRLB0 |= 0x10000; //tx enable
     CTRLB0 |= 0x20000; //rx enable
 
-
-
-
-
-
-    
-
-
 }
 
 
 void serial_write(const char *message){
     // Step 1, set Data Register
     // Step 2, Write a value to it
+    
 }
 
 
 
 const char *serial_read() {
-    return (char *) 0;
+    
+    return DATA0;
 }
