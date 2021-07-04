@@ -2,7 +2,7 @@
 
 
 void stack_begin() {
-    //*RESET_VECTOR_ARR[0] = &_estack;
+    
     vector_array[STACK_PTR] = &_estack;
     
     asm("mov r0,0\n"

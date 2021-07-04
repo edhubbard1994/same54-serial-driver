@@ -21,12 +21,18 @@ void serial_setup() {
 void serial_write(const char *message){
     // Step 1, set Data Register
     // Step 2, Write a value to it
+    volatile unsigned int index =  0;
+    while( message[index] != '\0' ) {
+        //TODO: send characters in a UART dataframe
+        ++index;
+    }
+
+    DATA0 = message;
     
 }
 
 
 
 const char *serial_read() {
-    
     return DATA0;
 }
