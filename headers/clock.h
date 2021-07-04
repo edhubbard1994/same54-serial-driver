@@ -7,7 +7,7 @@
 #define OSC32KCTRL *((uint32_t*) 0x40001400)
 
 #define GCLK *((uint32_t*) 0x40001C00)
-#define PCHCTRL0 *((uint32_t*) 0x40001C80)
+uint32_t* PCHCTRL0 = (uint32_t*) 0x40001C80; //47 indicies to set periphrial linking
 
 void init_clock();
  
