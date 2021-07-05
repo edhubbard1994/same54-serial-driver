@@ -1,11 +1,12 @@
 #include "serial.h"
+#include "gpio.h"
 
 #include <stdint.h>
 #include <string.h>
 
 
 void serial_setup() {
-
+    
     CTRLA0 = 0x01; // Reset all bits
     CTRLA0 |= 0x02; // enable 
     CTRLA0 |= 0x04; // internal clock
@@ -14,7 +15,7 @@ void serial_setup() {
     CTRLB0 |= 0x100; //collision detection
     CTRLB0 |= 0x10000; //tx enable
     CTRLB0 |= 0x20000; //rx enable
-
+    pin_serial();
 }
 
 

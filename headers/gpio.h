@@ -23,6 +23,8 @@ typedef unsigned int pin_num_t;
 
 void pin_setup();
 
+void pin_num_setup(pin_num_t pin);
+
 void pin_write(const pin_num_t pin, binary_state state);
 
 void pin_serial();
