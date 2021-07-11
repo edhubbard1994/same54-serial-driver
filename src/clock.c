@@ -8,6 +8,8 @@ void init_clock() {
 
 
     uint32_t *generator0 = &PCHCTRL0; //Set generator0 settings
+    
+    //TODO: need to get the address of this index correctly
     uint32_t *sercom0 = &PCHCTRL47[7]; //get register for SERCOM0
     
    
