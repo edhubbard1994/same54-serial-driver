@@ -38,7 +38,9 @@ OBJS +=  \
 	test.o \
 	setup.o \
 	gpio.o \
-	utils.o
+	utils.o \
+	serial.o \
+	clock.o 
 
 
 #OBJ = $(patsubst %,$(ODIR))

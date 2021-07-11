@@ -34,7 +34,7 @@ typedef enum {
     SPI = 2
 } SerialMode;
 
-void setup_serial();
+void serial_setup();
 
 void serial_write(const char *message);
 
