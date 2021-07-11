@@ -9,6 +9,7 @@
 void serial_setup() {
     init_clock();
     pin_serial();
+    
     CTRLA0 = 0x01; // Reset all bits
     CTRLA0 |= 0x02; // enable 
     CTRLA0 |= 0x04; // internal clock

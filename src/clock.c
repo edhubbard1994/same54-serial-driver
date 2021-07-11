@@ -13,7 +13,7 @@ void init_clock() {
     sercom0 = 0x00; //Set generator clock source to clock 0
     *generator0 |= 0x800; //output enable
     *generator0 |= 0x100; //generator enable
-    *generator0 |= 0x04; // generator source OSCULP32K
+    *generator0 |= 0x0; // generator source XOSC0
 
 
 
