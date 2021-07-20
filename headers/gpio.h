@@ -19,16 +19,14 @@ typedef unsigned int pin_num_t;
 #define PINCFG0 *( (uint32_t*) 0x41008140)
 #define PINCFG31 *( (uint32_t*) 0x4100815f) // completely irrelevant 
 
-//New Dynamic Port Config
-#define PORT_A  *( (uint32_t*) 0x41008000)
-#define PORT_B  *( (uint32_t*) 0x41008080)
-#define PORT_C  *( (uint32_t*) 0x41008100)
-#define PORT_D  *( (uint32_t*) 0x41008180)
 
-#define PIN_DIRECTION(port,pin) *( (uint32_t*) &port + 0x08) |= (0x1 << pin)
-#define PIN_WRITE(port,pin,state) *( (uint32_t*) &port + 0x10) |= (state << pin)
-#define PIN_CONFIG(port,pin,state)  *( (uint32_t*) &port + 0x140 + pin) |= (state)
 
+typedef enum {
+    PA = 0x41008000,
+    PB = 0x41008080,
+    PC = 0x41008100,
+    PD = 0x41008180
+} gpio_port_t;
 
 //uint32_t *pcclear = 0x4100800;
 
