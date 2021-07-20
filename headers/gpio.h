@@ -25,9 +25,9 @@ typedef unsigned int pin_num_t;
 #define PORT_C  *( (uint32_t*) 0x41008100)
 #define PORT_D  *( (uint32_t*) 0x41008180)
 
-#define PIN_DIRECTION(port,pin) *(port + 0x08) |= (0x1 << pin)
-#define PIN_WRITE(port,pin,state) *(port + 0x10) |= (state << pin)
-#define PIN_CONFIG(port,pin,state)  *(port + 0x140 + pin) |= (state)
+#define PIN_DIRECTION(port,pin) *( (uint32_t*) &port + 0x08) |= (0x1 << pin)
+#define PIN_WRITE(port,pin,state) *( (uint32_t*) &port + 0x10) |= (state << pin)
+#define PIN_CONFIG(port,pin,state)  *( (uint32_t*) &port + 0x140 + pin) |= (state)
 
 
 //uint32_t *pcclear = 0x4100800;
