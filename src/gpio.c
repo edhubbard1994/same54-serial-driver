@@ -26,7 +26,7 @@ void gpio_pin_write(gpio_port_t port ,pin_num_t pin, binary_state state ) {
     PIN_WRITE(port,pin,state);
 }
 
-void gpio_multiplex_mode(gpio_port_t port ,pin_num_t pin, uint32_t state ) {
+void gpio_multiplex_mode(gpio_port_t port ,pin_num_t pin, gpio_multiplex_mode_t state ) {
      PIN_CONFIG(port,pin,state);
 }
 
