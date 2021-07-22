@@ -7,9 +7,9 @@
 #define PORT_C  *( (uint32_t*) 0x41008100)
 #define PORT_D  *( (uint32_t*) 0x41008180)
 
-#define PIN_DIRECTION(port,pin,dir) *( (uint32_t*) port + 0x08) |= (dir << pin)
+#define PIN_DIRECTION(port,pin,dir) *( (uint32_t*) port + 0x8) |= (dir << pin)
 #define PIN_WRITE(port,pin,state) *( (uint32_t*) port + 0x10) |= (state << pin)
-#define PIN_CONFIG(port,pin,state)  *( (uint32_t*) port + 0x140 + pin) |= (state)
+#define PIN_CONFIG(port,pin,state)  *( (uint32_t*) port + 0x40 + pin) |= (state)
 
 
 void pin_setup(){

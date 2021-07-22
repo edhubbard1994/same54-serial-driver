@@ -2,7 +2,7 @@
 
 #include "setup.h"
 #include "utils.h"
-//#include "gpio.h"
+#include "gpio.h"
 #include "serial.h"
 
 
@@ -29,9 +29,28 @@ void test_serial() {
     }
 }
 
+void test_gpio_generic() {
+    gpio_direction_set(PA,22,ON);
+    gpio_direction_set(PB,28,ON);
+    gpio_direction_set(PC,6,ON); //led
+    gpio_direction_set(PD,8,ON);
+
+    gpio_pin_write(PA,22,ON);
+    gpio_pin_write(PB,28,ON);
+    gpio_pin_write(PC,6,ON);
+    gpio_pin_write(PD,8,ON);
+    test_led_flash();
+
+    for(;;) {
+
+    }
+}
+
 int main(void){
     //test_led_flash();
-    test_serial();
+    test_gpio_generic();
+    
+    //test_serial();
 
 
 }

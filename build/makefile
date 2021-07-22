@@ -71,7 +71,8 @@ debug:
 
 # Other Targets
 clean:
-	rm -rf test.elf obj/*
+	rm -rf test.elf
+	rm -rf ../obj/*
 
 disassemble:
 	arm-none-eabi-objdump --source test.elf
