@@ -10,7 +10,7 @@
 #define CTRLB(sercom) *((uint32_t *)sercom + 0x4)
 #define CTRLC(sercom) *((uint32_t *) sercom + 0x8)
 #define BAUD(sercom) *((uint32_t *) sercom +0xC)
-#define LENGTH(sercom) *((uint32_t *) serc0m + 0x22)
+#define LENGTH(sercom) *((uint32_t *) sercom + 0x22)
 #define DATA(sercom) *((uint32_t *) sercom + 0x28)
 
 void serial_setup() {
