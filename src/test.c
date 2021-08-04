@@ -12,10 +12,10 @@ void test_led_flash() {
     for(;;){
         
         delay(2000000);
-        //pin_write(18, ON);
+        pin_write(18, ON);
 
         delay(2000000);
-        //pin_write(18, OFF);
+        pin_write(18, OFF);
 
         //0x41008000
         //0x41008010
