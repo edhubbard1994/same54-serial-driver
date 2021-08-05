@@ -32,12 +32,13 @@ void serial_init() {
 }
 
 
-void serial_write(const char *message){
+void serial_write(const char *message, DriverNumber driver){
     // Step 1, set Data Register
     // Step 2, Write a value to it
     volatile unsigned int index =  0;
+
     while( message[index] != '\0' ) {
-        //TODO: send characters in a UART dataframe
+        DATA(driver) << message[index]; //shift into data register
         ++index;
     }
 
@@ -47,7 +48,7 @@ void serial_write(const char *message){
 
 
 
-const char *serial_read() {
+const char *serial_read(DriverNumber driver) {
     return DATA0;
 }
 
@@ -57,12 +58,13 @@ void serial_setup(DriverNumber driver_number,gpio_port_t rx_port,pin_num_t rx_pi
     CTRLA(driver_number) = 0x01; // Reset all bits
     CTRLA(driver_number) |= 0x02; // enable 
     CTRLA(driver_number) |= 0x04; // internal clock
+    CTRLA(driver_number)|= 0x10000; // pad 1 for tx 
     CTRLA(driver_number)|= 0x10000000; //asyncronous (UART) mode
 
     CTRLB(driver_number)|= 0x100; //collision detection
     CTRLB(driver_number) |= 0x10000; //tx enable
     CTRLB(driver_number) |= 0x20000; //rx enable
-    BAUD(driver_number) |= 0x20000; // bogus baud rate
+    BAUD(driver_number) |= 0x10000; // bogus baud rate
 
     gpio_multiplex_mode(rx_port,rx_pin,D); //TEST PA07
     
