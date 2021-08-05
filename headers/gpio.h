@@ -48,7 +48,6 @@ typedef enum {
 
 
 
-
 //old test functions
 
 void pin_setup();
@@ -60,6 +59,7 @@ void pin_write(const pin_num_t pin, binary_state state);
 void pin_serial();
 
 //new dynamic gpio functions
+
 void gpio_direction_set(gpio_port_t port ,pin_num_t pin, binary_state state );
 void gpio_pin_write(gpio_port_t port ,pin_num_t pin, binary_state state );
 void gpio_multiplex_mode(gpio_port_t port ,pin_num_t pin, gpio_multiplex_mode_t state );

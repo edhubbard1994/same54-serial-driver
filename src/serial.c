@@ -1,5 +1,4 @@
 #include "serial.h"
-#include "gpio.h"
 #include  "clock.h"
 
 #include <stdint.h>
@@ -28,6 +27,10 @@ void serial_setup() {
     
 }
 
+void serial_init() {
+
+}
+
 
 void serial_write(const char *message){
     // Step 1, set Data Register
@@ -46,4 +49,17 @@ void serial_write(const char *message){
 
 const char *serial_read() {
     return DATA0;
+}
+
+void serial_setup(DriverNumber driver_number,gpio_port_t rx_port,pin_num_t rx_pin) {
+    CTRLA(driver_number) = 0x01; // Reset all bits
+    CTRLA(driver_number) |= 0x02; // enable 
+    CTRLA(driver_number) |= 0x04; // internal clock
+    CTRLA(driver_number)|= 0x10000000; //asyncronous (UART) mode
+
+    CTRLB(driver_number)|= 0x100; //collision detection
+    CTRLB(driver_number) |= 0x10000; //tx enable
+    CTRLB(driver_number) |= 0x20000; //rx enable
+    
+
 }

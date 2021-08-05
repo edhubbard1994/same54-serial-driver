@@ -3,6 +3,8 @@
 
 #include <stdint.h>
 
+#include "gpio.h"
+
 /**
  * @brief Header for the Serial Interface 
  * 
@@ -34,7 +36,19 @@ typedef enum {
     SPI = 2
 } SerialMode;
 
-void serial_setup();
+typedef enum {
+    SERIAL1 = SERCOM0,
+    SERIAL2 = SERCOM1,
+}DriverNumber;
+
+typedef struct {
+    gpio_port_t port;
+    pin_num_t pin;
+}SerialPin;
+
+void serial_setup(DriverNumber driver_number,gpio_port_t rx_port,pin_num_t rx_pin);
+
+void serial_init();
 
 void serial_write(const char *message);
 
