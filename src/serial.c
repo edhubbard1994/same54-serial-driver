@@ -12,7 +12,7 @@
 #define LENGTH(sercom) *((uint32_t *) sercom + 0x22)
 #define DATA(sercom) *((uint32_t *) sercom + 0x28)
 
-void serial_setup() {
+void serial_setup_old() {
     init_clock();
     pin_serial();
     
@@ -42,14 +42,13 @@ void serial_write(const char *message, DriverNumber driver){
         ++index;
     }
 
-    DATA0 = message;
-    
+
 }
 
 
 
 const char *serial_read(DriverNumber driver) {
-    return DATA0;
+    return 0;
 }
 
 void serial_setup(DriverNumber driver_number,gpio_port_t rx_port,pin_num_t rx_pin) {
@@ -66,7 +65,7 @@ void serial_setup(DriverNumber driver_number,gpio_port_t rx_port,pin_num_t rx_pi
     CTRLB(driver_number) |= 0x20000; //rx enable
     BAUD(driver_number) |= 0x10000; // bogus baud rate
 
-    gpio_multiplex_mode(rx_port,rx_pin,D); //TEST PA07
+    gpio_multiplex_mode(rx_port,rx_pin,D); //TEST PC22
     
 
 }

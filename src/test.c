@@ -23,9 +23,15 @@ void test_led_flash() {
 }
 
 void test_serial() {
-    serial_setup();
-    for(;;) {
+    /**
+     * @brief Throw some bogus data in the data register and see what happens
+     * 
+     */
 
+    serial_setup(SERIAL2, PC, 22);
+    for(;;) {
+        serial_write("hello world\n\n",SERIAL2);
+        delay(5000000);
     }
 }
 
