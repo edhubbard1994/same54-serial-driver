@@ -54,9 +54,9 @@ void test_gpio_generic() {
 
 int main(void){
     //test_led_flash();
-    test_gpio_generic();
+    //test_gpio_generic();
     
-    //test_serial();
+    test_serial();
 
 
 }
