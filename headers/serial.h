@@ -50,9 +50,9 @@ void serial_setup(DriverNumber driver_number,gpio_port_t rx_port,pin_num_t rx_pi
 
 void serial_init();
 
-void serial_write(const char *message);
+void serial_write(const char *message, DriverNumber driver);
 
-const char *serial_read();
+const char *serial_read(DriverNumber driver);
 
 
 

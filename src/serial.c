@@ -12,7 +12,7 @@
 #define LENGTH(sercom) *((uint32_t *) sercom + 0x22)
 #define DATA(sercom) *((uint32_t *) sercom + 0x28)
 
-void serial_setup() {
+void serial_setup_old() {
     init_clock();
     pin_serial();
     

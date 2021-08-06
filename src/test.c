@@ -23,7 +23,7 @@ void test_led_flash() {
 }
 
 void test_serial() {
-    serial_setup();
+    //serial_setup();
     for(;;) {
 
     }
